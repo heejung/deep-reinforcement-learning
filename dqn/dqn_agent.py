@@ -11,37 +11,45 @@ import torch.optim as optim
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
 GAMMA = 0.99            # discount factor
-TAU = 1e-3              # for soft update of target parameters
 LR = 5e-4               # learning rate 
 UPDATE_EVERY = 2        # how often to update the network
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-class Agent():
-    """Interacts with and learns from the environment."""
+class DqnAgent():
+    """Interacts with and learns from the environment using DQN.
+    """
 
-    def __init__(self, state_size, action_size, seed, fc1_dim=64, fc2_dim=64):
-        """Initialize an Agent object.
+    def __init__(self, state_size, action_size, seed, fc1_size=64, fc2_size=64, tau=1e-3):
+        """Initialize an DqnAgent object.
         
         Params
         ======
             state_size (int): dimension of each state
             action_size (int): dimension of each action
             seed (int): random seed
+            fc1_size (int): size of the first fully-connected layer
+            fc2_size (int): size of the second fully-connected layer
+            tau (float): hyperparameter for soft update of target parameters
         """
+        self.tau = tau
+        
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(seed)
 
         # Q-Network
-        self.qnetwork_local = QNetwork(state_size, action_size, seed, fc1_dim, fc2_dim).to(device)
-        self.qnetwork_target = QNetwork(state_size, action_size, seed, fc1_dim, fc2_dim).to(device)
+        self.qnetwork_local = QNetwork(state_size, action_size, seed, fc1_size, fc2_size).to(device)
+        self.qnetwork_target = QNetwork(state_size, action_size, seed, fc1_size, fc2_size).to(device)
         self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=LR)
 
         # Replay memory
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
+
+    def tau(self):
+        return self.tau
     
     def step(self, state, action, reward, next_state, done):
         # Save experience in replay memory

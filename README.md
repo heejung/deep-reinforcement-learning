@@ -7,7 +7,7 @@
 
 ## Deep Reinforcement Learning
 
-* dpn: Deep Q-Network (DQN) in LunarLander-v2 environment
+* dpn: Deep Q-Network (DQN) and Double DQN in LunarLander-v2 environment
 
 
 Many of the exercises here are the exercises proposed by https://github.com/udacity/deep-reinforcement-learning
