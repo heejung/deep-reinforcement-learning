@@ -49,9 +49,20 @@ class DqnAgent():
         self.t_step = 0
 
     def tau(self):
+        """Returns TAU hyper parameter value used."""
         return self.tau
     
     def step(self, state, action, reward, next_state, done):
+        """Saves the experience to memory and learns from the experience.
+        
+        Params
+        ======
+            state (array_like): current state
+            action (int): action taken
+            reward (float): reward received for the action
+            next_state (array_like): next state
+            done (boolean): whether the current episode ended
+        """
         # Save experience in replay memory
         self.memory.add(state, action, reward, next_state, done)
         
