@@ -19,7 +19,7 @@ Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/
 
 (For AWS) If you'd like to train the agent on AWS (and have not enabled a virtual screen), then please use this link to obtain the environment.
 
-Place the file in this folder and unzip (or decompress) the file.
+2. Place the file in this folder and unzip (or decompress) the file.
 
 ### Python Environment Set-up
 
