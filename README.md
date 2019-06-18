@@ -8,6 +8,6 @@
 ## Deep Reinforcement Learning
 
 * dpn: Deep Q-Network (DQN) and Double DQN in LunarLander-v2 environment and Banana UnityEnvironment
-
+* ddpg: Deep Deterministic Policy Gradient (DDPG) in Reacher UnityEnvironment
 
 Many of the exercises here are the exercises proposed by https://github.com/udacity/deep-reinforcement-learning
