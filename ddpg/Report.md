@@ -22,4 +22,8 @@ The model solved the problem in 7 episodes after the first 100th episode is reac
 
 ## Future work
 
-[Distributed Distributional Deterministic Policy Gradients (D4PG)](https://arxiv.org/pdf/1804.08617.pdf) might improve the learning speed even more. 
+1. [Distributed Distributional Deterministic Policy Gradients (D4PG)](https://arxiv.org/pdf/1804.08617.pdf) might improve the learning speed even more. 
+
+2. Batch Norm should be tried only on the inputs.
+
+3. Prioritized Experience Replay (PER): Improve the current memory replay to use PER for the faster learning. One example of such comparison is found here: https://github.com/rlcode/per
